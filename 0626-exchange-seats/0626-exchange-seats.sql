@@ -1,0 +1,2 @@
+select  temp.id, temp.student
+from (select id, case when id%2 = 1 then (case when lead(student) over() is null then student else lead(student) over() end) else lag(student) over() end as student from seat) as temp
